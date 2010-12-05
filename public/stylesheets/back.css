@@ -3,6 +3,7 @@
 	padding: 0;
 }
 
+
 body {
 	background: #DADADA url("/images/bg_body.gif") left top repeat-x;
 	margin: 0 auto;
@@ -21,12 +22,36 @@ body {
 }
 
 
-#header {
+
+/*		Formatierung des Intro Blocks
+-----------------------------------------------------------------------*/
+
+#intro {
 	background: transparent url("/images/bg_intro.jpg") right top no-repeat;
 	position: relative;
 	padding: 1px;
 
 }
+
+
+#pageHeader {
+	display: inline;
+	height: 0;
+	left: -1000px;
+	overflow: hidden;
+	position: absolute;
+	top: -1000px;
+	width: 0;
+}
+
+		#pageHeader h1{
+			font: bold 154%/25px Arial, Helvetica, sans-serif;
+		}
+		
+		#pageHeader h2{
+			font: bold 90%/25px Arial, Helvetica, sans-serif;
+		}
+
 
 #quickSummary {
 	color: #000;
@@ -36,6 +61,16 @@ body {
 	top: 25px;
 }
 
+		#quickSummary .p1 {
+			display: inline;
+			height: 0;
+			left: -1000px;
+			overflow: hidden;
+			position: absolute;
+			top: -1000px;
+			width: 0;
+		}
+		
 		#quickSummary a, #quickSummary a:link, #quickSummary a:visited {
 			color: #F29E00;
 			font-weight: bold;
@@ -135,7 +170,10 @@ body {
 
 
 
-#linksList {
+/*		Die Linklisten
+-----------------------------------------------------------------------*/
+ 
+#linkList {
 	background: transparent url("/images/bg_linkList.gif") 0px 2px repeat-y;
 	color: #fff;
 	font-weight: normal;
@@ -145,20 +183,20 @@ body {
 	width: 221px;
 }
 		
-		#linksList h3 {
+		#linkList h3 {
 			padding-left: 10px;
 		}
 		
-		#linksList a, #linksList a:link, #linksList a:visited  {
+		#linkList a, #linkList a:link, #linkList a:visited  {
 			color: #000;
 			text-decoration: underline;
 		}
 		
-		#linksList a:hover, #linksList a:active, #linksList a:focus  {
+		#linkList a:hover, #linkList a:active, #linkList a:focus  {
 			text-decoration: none;
 		}
 		
-		#linksList ul li {
+		#linkList ul li {
 			font-size: 70%;
 			list-style: square;
 			
