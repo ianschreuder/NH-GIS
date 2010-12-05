@@ -1,4 +1,7 @@
-NhQis::Application.routes.draw do
+NhGis::Application.routes.draw do
+  root :to => "dash#index"
+  resources :nhs
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
