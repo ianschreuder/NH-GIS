@@ -1,6 +1,6 @@
 class NhsController < ApplicationController
   
-  def show
+  def index
     @zip = params[:zip]
     @distance = params[:distance]
     # if @zip && @distance
@@ -9,6 +9,19 @@ class NhsController < ApplicationController
     #   @zoom = calculate_zoom_level(meters)
     #   @homes = Home.find(:all, :conditions=>"location is not null and st_distance(location, ST_GeogFromText('SRID=4326;POINT(#{@geo.lng} #{@geo.lat})')) < #{meters}")
     # end
+  end
+  
+  def search
+    @zip = params[:zip]
+    @max = params[:max]
+    geo = Geokit::Geocoders::GoogleGeocoder.geocode(@zip)
+    loc = Location.new(:latitude => geo.lat, :longitude => geo.lng)
+    
+    @homes = Home.find(:all, :include=>:location).reject{|h| h.location.blank?}.each{|h| h.distance_from = h.location.distance(loc) }.sort{|x, y| x.distance_from <=> y.distance_from}
+    @homes = @homes[0..@max.to_i]
+    max_distance = [@homes.first.location.distance(@homes.last.location), loc.distance(@homes.last.location)].max
+    @zoom = calculate_zoom_level(max_distance * 0.62) # we're in kilometers here
+    render(:action=>:index)    
   end
   
   private

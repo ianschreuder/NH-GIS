@@ -1,41 +1,19 @@
-<div id="intro">
-	<div id="pageHeader">
-		<h1><span>css Zen Garden</span></h1>
-		<h2><span>The Beauty of <acronym title="Cascading Style Sheets">CSS</acronym> Design</span></h2>
-	</div>
+<%= content_for :main do %>
+<div id="mainText">
 
-	<div id="quickSummary">
-
-		<p class="p1"><span>A demonstration of what can be accomplished visually through <acronym title="Cascading Style Sheets">CSS</acronym>-based design. Select any style sheet from the list to load it into this page.</span></p>
-		<p class="p2"><span>Download the sample <a href="zengarden-sample.html" title="This page's source HTML code, not to be modified.">html file</a> and <a href="zengarden-sample.css" title="This page's sample CSS, the file you may modify.">css file</a></span></p>
-	</div>
-
-	<div id="preamble">
-
-		<h3><span>The Road to Enlightenment</span></h3>
-		<p class="p1"><span>Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum </span></p>
-	</div>
+	<h3><span>Requirements</span></h3>
+	<p class="p1"><span>Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum </span></p>
 </div>
 
-<div id="supportingText">
-	<div id="requirements">
-
-		<h3><span>Requirements</span></h3>
-		<p class="p1"><span>Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum </span></p>
-	</div>
-
-	<div id="footer">
-		<a href="http://www.mezzoblue.com/zengarden/faq/#aaa" title="Read about the accessibility of this site">aaa</a>
-	</div>
-
-</div>
+<% end %>
 
 
+<%= content_for :links do %>
 <div id="linkList">
 	<div id="lselect">
-		<h3 class="select"><span>Select a Design:</span></h3>
+		<h3 class="select"><span>Projects:</span></h3>
 		<ul>
-			<li><a href="/" title="AccessKey: a" accesskey="a">Sample #1</a> by <a href="http://www.mezzoblue.com/" class="c">Dave Shea</a>&nbsp;</li>
+			<li><a href="/nhs" title="AccessKey: n" accesskey="n">Nursing Home Compare</a> A Long Term Care<br />Discovery System</li>
 		</ul>
 	</div>
 
@@ -47,3 +25,4 @@
 	</div>
 
 </div>
+<% end %>

@@ -1,0 +1,42 @@
+<%=content_for :main do %>
+<div id="mainText">
+	<h3><span>Requirements</span></h3>
+  <%=render(:partial => "map")%>
+</div>
+
+<% end %>
+
+
+
+<%=content_for :links do %>
+<div id="linkList">
+  
+	<div id="lproject">
+		<h3 class="project"><span>Projects:</span></h3>
+		<ul>
+			<li><a href="/nhs" title="AccessKey: n" accesskey="n" disabled>Nursing Home Compare</a> A Long Term Care Discovery System</li>
+		</ul>
+	</div>
+
+	<div id="lsearchparams">
+		<h3 class="searchparams"><span>Search Parameters:</span></h3>
+    <form action="/nhs/search" method="get">
+      <fieldset>
+        <input type="text" name="zip" value="(zip code)"/>
+        <select id="num_records" name="max">
+          <option value="10" selected="yes">10 Facilities</option>
+          <option value="20">20 Facilities</option>
+          <option value="30">30 Facilities</option>
+        </select>
+      </fieldset>
+      <input type="submit" />
+    </form>  
+	</div>
+
+  <%= render("results") if !@homes.blank? %>
+
+</div>
+<% end %>
+
+
+

@@ -1,6 +1,8 @@
 NhGis::Application.routes.draw do
   root :to => "dash#index"
+  match "/nhs/search" => "nhs#search"
   resources :nhs
+  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

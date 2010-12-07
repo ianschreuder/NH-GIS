@@ -1,0 +1,9 @@
+<div id="lresults">
+	<h3 class="results"><span>Results:</span></h3>
+  <% @homes.each do |home| %>
+	<ul>
+	  <li>Name: <%=home.name%></li>
+	  <li>Zip: <%=home.zip%></li>
+	</ul>
+  <% end %>
+</div>
