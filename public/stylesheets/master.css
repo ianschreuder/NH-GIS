@@ -146,7 +146,9 @@ body {
 	width: 0;
 }
 
-
+#map_content {
+	margin: 0px 0 10px 5px;
+}
 
 
 
@@ -203,7 +205,7 @@ body {
 		font: normal 90%/19px Arial, Helvetica, sans-serif;
 	}
 #lsearchparams {
-	background: transparent url("/images/bg_lsearchparams.gif") left bottom no-repeat;
+	background: transparent url("/images/bg_lproject.gif") left bottom no-repeat;
 	padding-bottom: 30px;
 }
 	.searchparams {
@@ -223,7 +225,30 @@ body {
 	margin-bottom: 10px;
 	padding: 2px 5px 2px 5px;
 }
-.project span, .searchparams span {
+#lresults {
+	background: transparent url("/images/bg_lsearchparams.gif") left bottom no-repeat;
+	padding-bottom: 30px;
+}
+	#lresults ul {
+		border-top: 2px solid #999;
+		border-left: 2px solid #999;
+		margin-left: 10px;
+		margin-right: 15px;
+		margin-top: 10px;
+		height: 37px;
+	}
+	#lresults ul li {
+		margin-left: 10px;
+		list-style-type: none;
+	}
+	.results {
+		background: transparent url("/images/h1_lresults.gif") left top no-repeat;
+		display: block;
+		margin: 15px auto;
+		height: 29px;
+		width: 185px;
+	}
+.project span, .searchparams span, .results span {
 	display: inline;
 	height: 0;
 	left: -1000px;

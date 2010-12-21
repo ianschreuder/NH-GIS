@@ -1,6 +1,5 @@
 class Home < ActiveRecord::Base
   has_one :location
-  has_one :facility
   has_many :surveys
   has_many :deficiencies, :through => :surveys
 

@@ -1,30 +1,42 @@
 class NhsController < ApplicationController
   
   def index
-    @zip = params[:zip]
-    @distance = params[:distance]
-    # if @zip && @distance
-    #   meters = @distance.to_i * 609.344
-    #   @geo=MultiGeocoder.geocode(@zip)
-    #   @zoom = calculate_zoom_level(meters)
-    #   @homes = Home.find(:all, :conditions=>"location is not null and st_distance(location, ST_GeogFromText('SRID=4326;POINT(#{@geo.lng} #{@geo.lat})')) < #{meters}")
-    # end
+    # @zip = params[:zip]
+    # @distance = params[:distance]
+    # # if @zip && @distance
+    # #   meters = @distance.to_i * 609.344
+    # #   @geo=MultiGeocoder.geocode(@zip)
+    # #   @zoom = calculate_zoom_level(meters)
+    # #   @homes = Home.find(:all, :conditions=>"location is not null and st_distance(location, ST_GeogFromText('SRID=4326;POINT(#{@geo.lng} #{@geo.lat})')) < #{meters}")
+    # # end
   end
   
   def search
     @zip = params[:zip]
     @max = params[:max]
-    geo = Geokit::Geocoders::GoogleGeocoder.geocode(@zip)
-    loc = Location.new(:latitude => geo.lat, :longitude => geo.lng)
+    @geo = Geokit::Geocoders::GoogleGeocoder.geocode(@zip)
+    ActiveRecord::Base.connection.execute("set @latitude=#{@geo.lat};")
+    ActiveRecord::Base.connection.execute("set @longitude=#{@geo.lng};")
+    @homes = Home.find_by_sql(sql_command(@geo, @max))
     
-    @homes = Home.find(:all, :include=>:location).reject{|h| h.location.blank?}.each{|h| h.distance_from = h.location.distance(loc) }.sort{|x, y| x.distance_from <=> y.distance_from}
-    @homes = @homes[0..@max.to_i]
-    max_distance = [@homes.first.location.distance(@homes.last.location), loc.distance(@homes.last.location)].max
-    @zoom = calculate_zoom_level(max_distance * 0.62) # we're in kilometers here
+    # @homes = Home.find(:all, :include=>:location).reject{|h| h.location.blank?}.each{|h| h.distance_from = h.location.distance(loc) }.sort{|x, y| x.distance_from <=> y.distance_from}
+    # @homes = @homes[0..@max.to_i]
+    # str = "1478, 1485, 1399, 1489, 1438, 1338, 1535, 1526, 1450, 1372, 1466"
+    # @homes = Home.find(:all, :conditions => "id in (#{str})")
+
+    max_distance = @homes.first.location.distance(@homes.last.location)
+    @zoom = calculate_zoom_level(max_distance * 620) # we're in kilometers here
+
     render(:action=>:index)    
   end
   
   private
+  
+  def sql_command(geo, limit)
+    sql = "SELECT homes.*, 3956 * 2 * ASIN(SQRT(POWER(SIN((@latitude - ABS(locations.latitude)) * pi()/180 / 2), 2) + COS(@latitude * pi()/180 ) * COS(ABS(locations.latitude) * pi()/180) * POWER(SIN((@longitude - locations.longitude) * pi()/180 / 2), 2))) as distance FROM homes inner join locations on homes.id = locations.home_id ORDER BY distance limit #{limit};"
+    sql
+  end
+  
   
   # from google's scale estimates (depends a bit)
   def calculate_zoom_level(miles)
