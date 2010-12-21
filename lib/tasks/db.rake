@@ -2,13 +2,14 @@ require 'active_record'
 require 'fileutils'
 
 namespace :db do
-  @file_name = "data/seed_data.sql"
-  @sql_file = File.new(@file_name,"w+")
-  @zip_file = File.new("db/seed_data.sql.gz","w") 
+  @sql_file = "data/seed_data.sql"
+  @zip_file = "db/seed_data.sql.gz"
+
+  # @sql_file = File.new("data/seed_data.sql","w+")
 
   desc "Load seed data"
   task :load => [:environment] do
-    unzip_it if @sql_file.nil?
+    unzip_it
     conx = db_connection_string
     system("mysql #{conx} < data/seed_data.sql")
   end
@@ -26,20 +27,27 @@ end
 private
 
 def remove_sql_file
-    FileUtils.rm [@file_name]
+  FileUtils.rm [File.new(@sql_file,"w")]
 end
 
 def zip_it
-	Zlib::GzipWriter.open(@zip_file) do |gzip|
-	  gzip << @sql_file.read
+  sql_file = File.new(@sql_file,"r")
+  zip_file = File.new(@zip_file,"w") 
+	Zlib::GzipWriter.open(zip_file) do |gzip|
+	  gzip << sql_file.read
 	  gzip.close
 	end
 end
 
 def unzip_it
-  File.open(@zip_file) do |f|
+  return if File::exists?(@sql_file)
+  
+  sql_file = File.new(@sql_file,"w+")
+  zip_file = File.new(@zip_file,"r")
+  
+  File.open(zip_file) do |f|
     gz = Zlib::GzipReader.new(f)
-    @sql_file << gz.read
+    sql_file << gz.read
     gz.close
   end
 end
