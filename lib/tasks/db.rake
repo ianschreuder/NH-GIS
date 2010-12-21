@@ -48,7 +48,7 @@ def db_connection_string()
   db_config = ActiveRecord::Base.configurations[RAILS_ENV]
   db_name = db_config["database"]
   db_user = db_config["username"]
-  db_pass = (!db_config["password"].nil?) ? (" -W ") : ""
+  db_pass = (!db_config["password"].nil?) ? (" -p ") : ""
   db_host = (!db_config["host"].nil?) ? (" -h #{db_config["host"]}") : ""
   return "-u #{db_user} #{db_pass} #{db_host} #{db_name} "
 end
