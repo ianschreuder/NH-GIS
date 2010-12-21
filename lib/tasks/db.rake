@@ -7,7 +7,7 @@ namespace :db do
   @zip_file = File.new("db/seed_data.sql.gz","w") 
 
   desc "Load seed data"
-  task :seed => [:environment] do
+  task :load => [:environment] do
     unzip_it if @sql_file.nil?
     conx = db_connection_string
     system("psql #{conx} < data/seed_data.sql")
