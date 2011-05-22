@@ -4,7 +4,6 @@ gem 'rails', "3.1.0.beta1"
 gem 'mysql2'
 gem 'geokit'
 gem 'sass'
-gem 'coffee-script'
 gem 'uglifier'
 gem 'jquery-rails'
 
