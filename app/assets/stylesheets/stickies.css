@@ -1,0 +1,29 @@
+#stickies div { text-align: left; }
+#stickies li {list-style: none;}
+#stickies .stickies_close_area
+{
+    margin: 0;
+    padding: 0 10px 4px 0;
+    float: right;
+}
+
+.message.notice {
+  background: none repeat scroll 0 0 #F9F0BB;
+  border-color: #E0C52E;
+}
+.message.error {
+  background: none repeat scroll 0 0 #F1D0D0;
+  border-color: #E7A8A8;
+}
+.message.success {
+  background: none repeat scroll 0 0 #BEE4FA;
+  border-color: #529CC7;
+}
+.message {
+  -moz-border-radius: 5px 5px 5px 5px;
+  border-style: solid;
+  border-width: 2px;
+  margin-top: 1em;
+  position: relative;
+  z-index: 0;
+}

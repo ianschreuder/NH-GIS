@@ -1,0 +1,22 @@
+/*
+ * FIXME: Introduce SCSS & Sprockets
+ *= require_self
+ *= require core/libraries
+ *= require core/template/template
+ *= require core/grid/grids
+ *= require core/module/mod
+ *= require core/module/mod_skins
+ *= require core/media/media
+ *= require core/content
+ *= require core/heading/heading
+ *= require core/spacing/space
+ *= require core/table/table
+ *= require core/table/table_skins
+ *= require plugins/breadcrumb/breadcrumb
+ *= require plugins/tabs/tabs
+ *= require plugins/talk/talk
+ *= require plugins/talk/talk_skins
+ *= require plugins/forms/forms
+ *= require main
+*/
+

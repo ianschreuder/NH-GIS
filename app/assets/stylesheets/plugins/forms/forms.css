@@ -1,0 +1,12 @@
+label,
+input[type=text]
+	{display:block;}
+
+label
+	{margin-top:10px;}
+
+input[type=submit],
+input[type=button],
+input[type=reset]
+	{margin-top:10px;
+	display:inline-block;}

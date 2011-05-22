@@ -6,3 +6,5 @@ tmp/**/*
 Gemfile.lock
 public/.htaccess
 data/seed_data.sql
+.DS_Store
+.idea

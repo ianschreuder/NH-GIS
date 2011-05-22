@@ -1,0 +1,11 @@
+.nav
+	{}
+
+	.nav li
+		{float:left;
+		margin:0 5px;}
+
+		.nav li a
+			{display:block;
+			float:left;}
+	

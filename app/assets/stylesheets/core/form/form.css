@@ -1,0 +1,15 @@
+label
+	{display:block;
+	margin-top:10px;}
+
+input[type="file"],
+input[type="text"],
+input[type="radio"],
+input[type="checkbox"]
+	{display:block;}
+
+input[type="submit"],
+input[type="reset"],
+input[type="button"]
+	{display:inline-block;
+	margin-top:10px;}

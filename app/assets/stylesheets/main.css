@@ -1,0 +1,42 @@
+#register-form,
+#login-form
+	{display:none;}
+
+sup
+	{font-size:50%;
+	position:relative;
+	vertical-align:top;
+	padding-left:3px;}
+
+.head
+	{background:#F90;
+	overflow:hidden;
+	padding:0 10px;}
+
+	.head .logo,
+	.head .login
+		{line-height:40px;}
+
+	.head .logo,
+	.head .logo a
+		{font-size:30px;
+		float:left;
+		color:#FFF;}
+
+	.head .login
+		{float:right;
+		color:#FFF;}
+
+.foot
+	{border-top:1px solid #EFEFEF;
+	overflow:hidden;}
+
+	.foot .copyright
+		{float:left;}
+
+	.foot .nav
+		{float:right;}
+
+		.foot .nav li
+			{float:left;
+			margin:0 10px;}
